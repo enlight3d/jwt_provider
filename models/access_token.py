@@ -1,5 +1,6 @@
 from odoo import models, fields, api
 from datetime import datetime, timedelta
+from dateutil import parser
 from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
 
 class JwtAccessToken(models.Model):
@@ -15,4 +16,4 @@ class JwtAccessToken(models.Model):
     @api.depends('expires')
     def _compute_is_expired(self):
         for token in self:
-            token.is_expired = datetime.now() > token.expires
+            token.is_expired = datetime.now() > parser.parse(token.expires)
