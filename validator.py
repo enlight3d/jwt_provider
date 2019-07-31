@@ -9,7 +9,7 @@ from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
 
 _logger = logging.getLogger(__name__)
 
-SECRET_KEY = "skjdfe48ueq893rihesdio*($U*WIO$u8"
+SECRET_KEY = "5d7f9154799c343c52365def5a36bdb67a83d585"
 
 regex = r"^[a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$"
 
@@ -52,7 +52,6 @@ class Validator:
         record = request.env['jwt_provider.access_token'].sudo().search([
             ('token', '=', token)
         ])
-
         if len(record) != 1:
             _logger.info('not found %s' % token)
             return False
